@@ -1,0 +1,23 @@
+*** Settings ***
+
+Library           AppiumLibrary
+
+*** Variables ***
+${REMOTE_URL}     http://localhost:4723/wd/hub      # URL to appium server
+${PLATFORM_NAME}    iOS
+${PLATFORM_VERSION}    11.0
+${DEVICE_NAME}    iPhone Simulator
+#Appium uses the *.app directory that is created by the ios build to provision the emulator.
+${APP_LOCATION}        /Users/nextzycnx/Library/Developer/Xcode/DerivedData/HelloWorld-gqpazzdeiwoyuvffapoiivcfsjhr/Build/Products/Debug-iphonesimulator/HelloWorld.app
+${BUNDLE_ID}         com.nextzy.HelloWorld
+
+*** Keywords ***
+Open App
+     Open Application    ${REMOTE_URL}    platformName=${PLATFORM_NAME}    platformVersion=${PLATFORM_VERSION}    deviceName=${DEVICE_NAME}      app=${APP_LOCATION}       automationName=appium   
+Close All Apps
+     Close All Applications
+
+*** Test Cases ***
+test_demo
+     Open App
+     Close All Apps
