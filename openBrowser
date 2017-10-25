@@ -1,0 +1,15 @@
+*** Settings ***
+Library    Selenium2Library
+
+*** Variables ***
+${BROWSER}        chrome
+${GOOGLE URL}    http://www.google.com
+
+*** Keywords ***
+go to google
+    Open Browser    ${GOOGLE URL}    ${BROWSER}
+
+*** Testcases ***
+Search
+    go to google
+Test Teardown    Close Browser
